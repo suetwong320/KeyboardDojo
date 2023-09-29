@@ -17,6 +17,7 @@ function Home() {
   const [incorrect, setIncorrect] = React.useState(0);
   const [incorrectIndices, setIncorrectIndices] = useState([]);
   const [index, setIndex] = React.useState(0);
+  const [placeholder, setPlaceholder] = React.useState("Start typing...");
 
   const [gameover, setGameover] = React.useState(false);
 
@@ -40,6 +41,7 @@ function Home() {
   }, []);
 
   const handleInput = (e) => {
+    setPlaceholder("");
     if (index + 1 <= textArr.length - 1) {
       setGameover(false);
     } else {
@@ -95,7 +97,7 @@ function Home() {
           onChange={handleInput}
           id="input-area"
           ref={inputRef}
-          s
+          placeholder={placeholder}
         />
       </div>
 
