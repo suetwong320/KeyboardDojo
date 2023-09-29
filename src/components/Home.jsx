@@ -84,7 +84,7 @@ function Home() {
   return (
     <div className="Home">
       <nav className="nav-bar" style={{ width: "100%" }}>
-        <img src="/KeyboardDojo.png" alt="" style={{ width: "250px" }} />
+        <img src="/KeyboardDojo_1.png" alt="" style={{ width: "250px" }} />
       </nav>
 
       {showPopup && (
