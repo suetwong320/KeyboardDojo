@@ -9,12 +9,51 @@ import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 import Result from "./popup/Result";
 
 function Home() {
-  // const text =
-  //   "Googleorg is fueling the next generation of scientists with a $10M grant to FIRST Robotics and REC Foundation to help 300K+ middle schoolers gain access to robotics and AI education. Learn more";
+  const text = [
+    "The wise owl perched atop the ancient oak, its eyes glowing like golden orbs in the moonlight, watched silently as the nocturnal creatures emerged from their hidden realms. The silent whispers of the leaves told tales of unseen worlds, weaving a symphony of secrets untold.",
 
-  const text = "Hello";
+    "In a realm where dragons soared above, their scales shimmering in the sun's embrace, a lone knight ventured into the unknown, his armor clinking softly. The air was ripe with the fragrance of the myriad of flowers that danced in the gentle breeze, whispering secrets of valor and magic.",
 
-  const textArr = text.split("");
+    "The endless cascade of binary data flowed like a digital river through the labyrinth of circuits and transistors. The computer hummed softly, its artificial intelligence contemplating the vastness of human experience and the myriad mysteries of the universe, unbounded by time.",
+
+    "A solitary beacon illuminated the boundless ocean, its rays dancing upon the water like a waltz of light. The waves, whispering stories of distant lands and ancient civilizations, cradled the vessels of explorers in their eternal embrace, guiding them through the labyrinth of the sea.",
+
+    "Amidst the echoes of time, ancient monuments stood as guardians of history, their stones etched with the wisdom of bygone eras. The sun's golden embrace breathed life into the shadows, unveiling the forgotten tales of valor and the eternal dance of light and darkness.",
+
+    "The velvet curtain of the night was adorned with the diamonds of the cosmos, each twinkling star a beacon in the vastness of the universe. The whispers of the celestial symphony filled the infinite space, weaving the tapestry of time and the eternal dance of the galaxies.",
+
+    "In the serene embrace of the forest, the symphony of nature unfolded, the leaves whispering secrets of the ancient earth. The creatures of the woodlands danced in the dappled sunlight, their footsteps a melody in the eternal song of the wilderness.",
+
+    "The silvery strands of the spider's web danced in the morning breeze, each delicate thread glistening with the tears of dawn. The forest awoke in a symphony of light, the leaves whispering tales of the nocturnal ballet and the eternal dance of the shadows.",
+
+    "The boundless expanse of the desert whispered tales of ancient civilizations, its sands the keepers of forgotten secrets. The winds danced amongst the dunes, their melodies a symphony of the eternal and the transient, weaving the song of the sands.",
+
+    "The whispering winds of autumn danced through the golden leaves, telling tales of harvests and feasts. The air was ripe with the fragrance of ripened fruits and the gentle hum of the world preparing for the embrace of winter's chill.",
+
+    "In the boundless fields of the cosmos, stars danced in celestial harmony, their light the symphony of eternity. Each twinkling note told tales of worlds unseen and the eternal dance of light and darkness, woven into the fabric of the universe.",
+
+    "The labyrinth of the mind is a realm of infinite possibilities, its corridors adorned with the tapestries of thoughts and emotions. The dance of neurons painted the canvas of consciousness with the myriad hues of experiences, weaving the symphony of self.",
+
+    "The ancient tome lay open, its pages whispering tales of arcane wisdom and forgotten spells. The air was heavy with the fragrance of aged parchment and the echoes of the incantations that had once danced through the hallowed halls of the sanctum.",
+
+    "The enigma of the ocean depths whispered secrets of hidden realms and ancient leviathans. The dance of the waves was a symphony of the mysterious and the known, the surface a veil between worlds, each ripple a note in the song of the sea.",
+
+    "The city slept under the veil of the night, its heartbeat a symphony of dreams and whispers. The shadows danced amongst the towering buildings, the moonlight painting the canvas of the urban jungle with the hues of silence and solitude.",
+
+    "In the realm of dreams, the landscapes of the imagination unfolded in a dance of shadows and light. The air was heavy with the fragrance of unseen flowers and the echoes of laughter that resonated through the corridors of the mind.",
+
+    "The boundless sky whispered tales of adventurous spirits and winged marvels. The clouds danced in the embrace of the winds, their shapes morphing into the echoes of the dreams of the earthbound, each wisp a note in the symphony of the heavens.",
+
+    "The realm of the mystical was a tapestry of ancient spells and enchanted lands, its fabric woven with the threads of wonder and awe. The air was ripe with the fragrance of magical herbs and the soft murmur of the elements, each whisper a secret of the arcane.",
+
+    "The golden sands of time flowed through the ancient hourglass, each grain a whisper of the eternal dance of the ages. The air was filled with the echoes of civilizations risen and fallen, each shadow a tale of glory and ruin, woven into the fabric of history.",
+
+    "The eternal dance of the celestial bodies painted the canvas of the cosmos with the hues of time and space. The whispers of the galaxies unfolded in a symphony of light and darkness, each twinkling star a note in the song of the universe.",
+  ];
+
+  const rand = Math.floor(Math.random() * text.length);
+
+  const textArr = text[rand].split("");
 
   const [score, setScore] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
