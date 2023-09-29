@@ -51,16 +51,14 @@ function Home() {
     "The eternal dance of the celestial bodies painted the canvas of the cosmos with the hues of time and space. The whispers of the galaxies unfolded in a symphony of light and darkness, each twinkling star a note in the song of the universe.",
   ];
 
-  const rand = Math.floor(Math.random() * text.length);
-
-  const textArr = text[rand].split("");
-
   const [score, setScore] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
   const [incorrect, setIncorrect] = React.useState(0);
   const [incorrectIndices, setIncorrectIndices] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [placeholder, setPlaceholder] = React.useState("Start typing...");
+
+  const [randText, setRandText] = React.useState([]);
 
   const [gameover, setGameover] = React.useState(false);
 
@@ -70,7 +68,10 @@ function Home() {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, [index, correct, incorrect]);
+
+    const rand = Math.floor(Math.random() * text.length);
+    setRandText(text[rand].split(""));
+  }, []);
 
   useEffect(() => {
     const handleBlur = () => {
@@ -87,7 +88,7 @@ function Home() {
 
   const handleInput = (e) => {
     setPlaceholder("");
-    if (index + 1 <= textArr.length - 1) {
+    if (index + 1 <= randText.length - 1) {
       setGameover(false);
       setShowPopup(false);
     } else {
@@ -96,11 +97,11 @@ function Home() {
     }
 
     if (gameover === false) {
-      if (e.target.value === textArr[index]) {
+      if (e.target.value === randText[index]) {
         // setScore(score + 1);
         setCorrect(correct + 1);
         setIndex(index + 1);
-        console.log(textArr[index]);
+        console.log(randText[index]);
       } else {
         // setScore(score - 1);
         setIncorrect(incorrect + 1);
@@ -132,7 +133,7 @@ function Home() {
           // score={score}
           correct={correct}
           incorrect={incorrect}
-          accuracy={formatAsPercentage((correct / textArr.length) * 100)}
+          accuracy={formatAsPercentage((correct / randText.length) * 100)}
         />
       )}
 
@@ -140,7 +141,7 @@ function Home() {
         <button className="language-btn">English</button>
       </div>
       <div className="text-area">
-        {textArr.map((letter, i) => {
+        {randText.map((letter, i) => {
           let className = "letter";
           if (i < index) {
             className += incorrectIndices.includes(i)
