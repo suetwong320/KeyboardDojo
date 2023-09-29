@@ -9,7 +9,7 @@ import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 import Result from "./popup/Result";
 
 function Home() {
-  const text = [
+  const paragraphs = [
     "The wise owl perched atop the ancient oak, its eyes glowing like golden orbs in the moonlight, watched silently as the nocturnal creatures emerged from their hidden realms. The silent whispers of the leaves told tales of unseen worlds, weaving a symphony of secrets untold.",
 
     "In a realm where dragons soared above, their scales shimmering in the sun's embrace, a lone knight ventured into the unknown, his armor clinking softly. The air was ripe with the fragrance of the myriad of flowers that danced in the gentle breeze, whispering secrets of valor and magic.",
@@ -51,12 +51,37 @@ function Home() {
     "The eternal dance of the celestial bodies painted the canvas of the cosmos with the hues of time and space. The whispers of the galaxies unfolded in a symphony of light and darkness, each twinkling star a note in the song of the universe.",
   ];
 
+  const sentences = [
+    "The moonlight danced on the tranquil sea.",
+    "Leaves whispered secrets in a gentle breeze.",
+    "The clock ticked away, echoing in silence.",
+    "Clouds painted the sky with shadows and light.",
+    "The city skyline glittered in the night.",
+    "The mountain stood majestic against the skyline.",
+    "The cat prowled silently through the grass.",
+    "Raindrops played a sweet melody on the roof.",
+    "The candle flame flickered in the darkness.",
+    "Sunset painted the horizon in vibrant hues.",
+    "The waves embraced the shore tenderly.",
+    "The stars were diamonds in the night sky.",
+    "The book held the echo of forgotten words.",
+    "The deer leapt through the silent forest.",
+    "The music wove a tapestry of emotion.",
+    "The garden was a symphony of colors.",
+    "The wind sang a lullaby through the trees.",
+    "The shadows held whispers of ancient secrets.",
+    "The snowflakes danced in the winter air.",
+    "The flowers bloomed in a rainbow of colors.",
+  ];
+
   const [score, setScore] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
   const [incorrect, setIncorrect] = React.useState(0);
   const [incorrectIndices, setIncorrectIndices] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [placeholder, setPlaceholder] = React.useState("Start typing...");
+
+  const [width, setWidth] = useState(window.innerWidth);
 
   const [randText, setRandText] = React.useState([]);
 
@@ -68,12 +93,21 @@ function Home() {
 
   const activeSpan = useRef(null);
 
+  const [text, setText] = useState(paragraphs);
+
+  useEffect(() => {
+    if (width < 767) {
+      setText(sentences);
+    } else {
+      setText(paragraphs);
+    }
+  }, [width]);
+
   useEffect(() => {
     inputRef.current.focus();
-
     const rand = Math.floor(Math.random() * text.length);
     setRandText(text[rand].split(""));
-  }, []);
+  }, [text]);
 
   useEffect(() => {
     if (activeSpan.current) {
