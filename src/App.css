@@ -4,8 +4,20 @@
     rgb(57, 57, 57),
     rgb(4, 4, 4)
   );
-  height: 100vh;
+  height: 100%;
   padding: 0px;
+  margin: 0px;
+}
+
+.nav-bar {
+  padding: 20px 20px 20px 20px;
+  font-weight: bold;
+}
+
+.brand-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
   margin: 0px;
 }
 
@@ -21,14 +33,28 @@ h3 {
 }
 
 .letter {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
+}
+
+.language-btn-div {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.language-btn {
+  padding: 5px 25px;
+  border-radius: 20px;
+  border: none;
+  font-size: 20px;
 }
 
 .text-area {
   text-align: center;
   font-family: "Dela Gothic One", cursive;
   font-size: 36px;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 40px;
 }
 
 @keyframes bounce {
@@ -50,14 +76,17 @@ h3 {
 }
 
 .correct {
-  color: rgb(0, 196, 0);
-  text-shadow: 0 0 5px rgb(0, 255, 0);
+  color: rgb(91, 199, 91);
+}
+
+.incorrect {
+  color: rgb(195, 72, 72);
 }
 
 .current {
   animation: bounce 1s ease infinite;
-  color: orange;
-  text-shadow: 0 0 5px orange;
+  color: rgb(220, 148, 16);
+  text-shadow: 0 0 5px rgb(193, 146, 59);
 }
 
 .others {
@@ -71,10 +100,9 @@ h3 {
 }
 
 .input-area > input {
-  height: 50px;
+  height: 0px;
   font-size: 25px;
   border-radius: 5px;
-  padding: 10px;
   width: 50px;
   border: none !important;
   background-color: transparent !important;
@@ -84,4 +112,10 @@ h3 {
 
 .input-area > input:focus {
   outline: none;
+}
+
+@media (max-width: 1200px) {
+  .letter {
+    font-size: 20px;
+  }
 }
