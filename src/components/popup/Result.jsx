@@ -18,7 +18,7 @@ const Result = ({ setShowPopup, ...props }) => {
             <div className="d-flex" style={{ padding: "24px 24px 5px 24px" }}>
               <div style={{ width: "100%" }}>
                 <img
-                  src="KeyboardDojo_1.png"
+                  src="KeyboardDojo.png"
                   className="flex--item fl1 fs-headline1 v-truncate2"
                   alt=""
                   style={{ width: "170px" }}
