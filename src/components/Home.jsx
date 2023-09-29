@@ -67,8 +67,9 @@ function Home() {
 
   return (
     <div className="Home">
-      <nav className="nav-bar">
-        <p className="brand-name">KeyboardDojo</p>
+      <nav className="nav-bar" style={{ width: "100%" }}>
+        {/* <p className="brand-name">KeyboardDojo</p> */}
+        <img src="/KeyboardDojo.png" alt="" style={{ width: "250px" }} />
       </nav>
 
       <div className="language-btn-div">
