@@ -66,12 +66,23 @@ function Home() {
 
   const [showPopup, setShowPopup] = useState(false);
 
+  const activeSpan = useRef(null);
+
   useEffect(() => {
     inputRef.current.focus();
 
     const rand = Math.floor(Math.random() * text.length);
     setRandText(text[rand].split(""));
   }, []);
+
+  useEffect(() => {
+    if (activeSpan.current) {
+      activeSpan.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [index]);
 
   useEffect(() => {
     const handleBlur = () => {
@@ -121,6 +132,18 @@ function Home() {
     }).format(num / 100);
   }
 
+  const getClassName = (i) => {
+    let className = "letter";
+    if (i < index) {
+      className += incorrectIndices.includes(i) ? " incorrect" : " correct";
+    } else if (i === index) {
+      className += " current";
+    } else {
+      className += " others";
+    }
+    return className;
+  };
+
   return (
     <div className="Home">
       <nav className="nav-bar" style={{ width: "100%" }}>
@@ -140,21 +163,17 @@ function Home() {
       <div className="language-btn-div">
         <button className="language-btn">English</button>
       </div>
-      <div className="text-area">
-        {randText.map((letter, i) => {
-          let className = "letter";
-          if (i < index) {
-            className += incorrectIndices.includes(i)
-              ? " incorrect"
-              : " correct";
-          } else if (i === index) {
-            className += " current";
-          } else {
-            className += " others";
-          }
 
-          return <span className={className}>{letter}</span>;
-        })}
+      <div className="text-area">
+        {randText.map((letter, i) => (
+          <span
+            key={i}
+            ref={i === index ? activeSpan : null}
+            className={getClassName(i)}
+          >
+            {letter}
+          </span>
+        ))}
       </div>
 
       <div className="input-area">
