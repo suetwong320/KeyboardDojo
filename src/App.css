@@ -29,8 +29,7 @@ h1 {
 }
 
 h3 {
-  color: white !important;
-  text-align: center;
+  color: black;
 }
 
 .letter {
@@ -47,7 +46,8 @@ h3 {
   padding: 5px 25px;
   border-radius: 20px;
   border: none;
-  font-size: 20px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .text-area {
@@ -78,16 +78,19 @@ h3 {
 
 .correct {
   color: rgb(91, 199, 91);
+  transition: 0.3s;
 }
 
 .incorrect {
   color: rgb(195, 72, 72);
+  transition: 0.3s;
 }
 
 .current {
   animation: bounce 1s ease infinite;
   color: rgb(220, 148, 16);
   text-shadow: 0 0 5px rgb(193, 146, 59);
+  transition: 0.3s;
 }
 
 .others {
@@ -113,6 +116,11 @@ h3 {
 
 .input-area > input:focus {
   outline: none;
+}
+
+.result-div {
+  margin: 30px 0px;
+  text-align: left;
 }
 
 @media (max-width: 1200px) {
