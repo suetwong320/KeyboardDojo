@@ -26,6 +26,7 @@ const Result = ({ setShowPopup, ...props }) => {
 
                 <div className="result-div">
                   {/* <h3>{`Score: ${props.score}`}</h3> */}
+                  <h3>{`Time spend: ${props.time}`}</h3>
                   <h3>{`Correct: ${props.correct}`}</h3>
                   <h3>{`Incorrect: ${props.incorrect}`}</h3>
                   <h3>{`Accuracy: ${props.accuracy}`}</h3>

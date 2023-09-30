@@ -24,6 +24,13 @@
   font-family: "Dela Gothic One", cursive;
 }
 
+.timer {
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
 h1 {
   margin: 0px !important;
   color: white;

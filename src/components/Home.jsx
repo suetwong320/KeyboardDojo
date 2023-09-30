@@ -95,6 +95,10 @@ function Home() {
 
   const [text, setText] = useState(paragraphs);
 
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  const [started, setStarted] = useState(false);
+
   useEffect(() => {
     if (width < 767) {
       setText(sentences);
@@ -131,7 +135,28 @@ function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    let interval;
+    if (started) {
+      interval = setInterval(() => {
+        setElapsedTime((prev) => prev + 1000); // Add 1000 ms every second
+      }, 1000);
+    }
+    // Clear the interval when the component unmounts or if typing stops
+    return () => clearInterval(interval);
+  }, [started]);
+
+  function formatTime(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  }
+
   const handleInput = (e) => {
+    if (!started) setStarted(true);
+
+    setPlaceholder("");
     setPlaceholder("");
     if (index + 1 <= randText.length - 1) {
       setGameover(false);
@@ -139,16 +164,15 @@ function Home() {
     } else {
       setGameover(true);
       setShowPopup(true);
+      setStarted(false);
     }
 
     if (gameover === false) {
       if (e.target.value === randText[index]) {
-        // setScore(score + 1);
         setCorrect(correct + 1);
         setIndex(index + 1);
         console.log(randText[index]);
       } else {
-        // setScore(score - 1);
         setIncorrect(incorrect + 1);
         setIndex(index + 1);
         setIncorrectIndices([...incorrectIndices, index]);
@@ -188,11 +212,14 @@ function Home() {
         <Result
           setShowPopup={setShowPopup}
           // score={score}
+          time={formatTime(elapsedTime)}
           correct={correct}
           incorrect={incorrect}
           accuracy={formatAsPercentage((correct / randText.length) * 100)}
         />
       )}
+
+      {/* <div className="timer">{formatTime(elapsedTime)}</div> */}
 
       <div className="language-btn-div">
         <button className="language-btn">English</button>
