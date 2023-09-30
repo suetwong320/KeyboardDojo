@@ -87,21 +87,19 @@ h3 {
 
 .correct {
   color: rgb(91, 199, 91);
-  transition: 0.3s;
+  border-left: 3px solid transparent !important;
 }
 
 .incorrect {
   color: rgb(195, 72, 72);
-  transition: 0.3s;
+  border-left: 3px solid transparent !important;
 }
 
 .current {
   animation: bounce 1s ease infinite;
   color: rgb(220, 148, 16);
   text-shadow: 0 0 5px rgb(193, 146, 59);
-  transition: 0.3s;
   border-left: 3px solid rgb(193, 146, 59);
-  padding: 5px;
 }
 
 .others {
