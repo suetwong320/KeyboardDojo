@@ -240,15 +240,15 @@ function Home() {
           onChange={handleInput}
           id="input-area"
           ref={inputRef}
-          placeholder={placeholder}
+          // placeholder={placeholder}
         />
-        {placeholder === "" ? null : (
+        {/* {placeholder === "" ? null : (
           <FontAwesomeIcon
             icon={faKeyboard}
             shake
             style={{ color: "#fa9e00" }}
           />
-        )}
+        )} */}
       </div>
 
       <Footer />
