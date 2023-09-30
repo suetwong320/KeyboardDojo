@@ -74,7 +74,6 @@ function Home() {
     "The flowers bloomed in a rainbow of colors.",
   ];
 
-  const [score, setScore] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
   const [incorrect, setIncorrect] = React.useState(0);
   const [incorrectIndices, setIncorrectIndices] = useState([]);
@@ -139,10 +138,9 @@ function Home() {
     let interval;
     if (started) {
       interval = setInterval(() => {
-        setElapsedTime((prev) => prev + 1000); // Add 1000 ms every second
+        setElapsedTime((prev) => prev + 1000);
       }, 1000);
     }
-    // Clear the interval when the component unmounts or if typing stops
     return () => clearInterval(interval);
   }, [started]);
 
@@ -211,7 +209,6 @@ function Home() {
       {showPopup && (
         <Result
           setShowPopup={setShowPopup}
-          // score={score}
           time={formatTime(elapsedTime)}
           correct={correct}
           incorrect={incorrect}
