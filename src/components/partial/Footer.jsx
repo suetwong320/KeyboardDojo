@@ -7,7 +7,7 @@ function Footer() {
     <section className="">
       <footer className="text-center text-white">
         <div className="container p-4 pb-0">
-          <section className="">
+          {/* <section className="">
             <p className="d-flex justify-content-center align-items-center">
               <span className="me-3">Register for free</span>
               <button
@@ -17,7 +17,7 @@ function Footer() {
                 Sign up!
               </button>
             </p>
-          </section>
+          </section> */}
         </div>
 
         <div
