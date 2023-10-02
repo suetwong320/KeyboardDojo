@@ -212,11 +212,11 @@ function Home() {
       {showPopup && (
         <Result
           setShowPopup={setShowPopup}
-          time={~~(text.length / (elapsedTime / 60000))}
+          time={elapsedTime}
           correct={correct}
           incorrect={incorrect}
           accuracy={formatAsPercentage((correct / randText.length) * 100)}
-          wpm={wpm}
+          wpm={~~(text.length / (elapsedTime / 60000))}
         />
       )}
 
