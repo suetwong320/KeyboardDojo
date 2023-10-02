@@ -98,6 +98,8 @@ function Home() {
 
   const [started, setStarted] = useState(false);
 
+  const [wpm, setWpm] = useState(0);
+
   useEffect(() => {
     if (width < 767) {
       setText(sentences);
@@ -141,6 +143,7 @@ function Home() {
         setElapsedTime((prev) => prev + 1000);
       }, 1000);
     }
+
     return () => clearInterval(interval);
   }, [started]);
 
@@ -209,14 +212,15 @@ function Home() {
       {showPopup && (
         <Result
           setShowPopup={setShowPopup}
-          time={formatTime(elapsedTime)}
+          time={~~(text.length / (elapsedTime / 60000))}
           correct={correct}
           incorrect={incorrect}
           accuracy={formatAsPercentage((correct / randText.length) * 100)}
+          wpm={wpm}
         />
       )}
 
-      {/* <div className="timer">{formatTime(elapsedTime)}</div> */}
+      <div className="timer">{formatTime(elapsedTime)}</div>
 
       <div className="language-btn-div">
         <button className="language-btn">English</button>
