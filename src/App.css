@@ -4,12 +4,11 @@
     rgb(57, 57, 57),
     rgb(4, 4, 4)
   );
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: absolute;
+  flex-direction: column; */
   padding: 0px;
   margin: 0px;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .nav-bar {
