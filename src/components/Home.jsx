@@ -212,6 +212,7 @@ function Home() {
   const [width, setWidth] = useState(window.innerWidth);
 
   const [randText, setRandText] = React.useState([]);
+  const [randWholeText, setRandWholeText] = React.useState([]);
 
   const [gameover, setGameover] = React.useState(false);
 
@@ -245,6 +246,7 @@ function Home() {
     if (text.length) {
       const rand = Math.floor(Math.random() * text.length);
       setRandText(text[rand].split(""));
+      setRandWholeText(text[rand]);
     }
   }, [text]);
 
@@ -331,6 +333,8 @@ function Home() {
     return className;
   };
 
+  const numberOfWords = randText.join("").split(" ").length;
+
   return (
     <div className="Home">
       <nav className="nav-bar" style={{ width: "100%" }}>
@@ -343,8 +347,8 @@ function Home() {
           time={formatTime(elapsedTime)}
           correct={correct}
           incorrect={incorrect}
-          accuracy={formatAsPercentage((correct / randText.length) * 100)}
-          wpm={~~(text.length / 5 / (elapsedTime / 60000))}
+          accuracy={formatAsPercentage((correct / numberOfWords) * 100)}
+          wpm={~~(numberOfWords / 5 / (elapsedTime / 60000))}
         />
       )}
 
