@@ -147,12 +147,24 @@ function Home() {
     "El fútbol es el deporte más popular en España.",
   ];
 
+  const paragraphsByLanguage = {
+    English: paragraphsEnglish,
+    French: paragraphsFrench,
+    Spanish: paragraphsSpanish,
+  };
+
+  const sentencesByLanguage = {
+    English: sentencesEnglish,
+    French: sentencesFrench,
+    Spanish: sentencesSpanish,
+  };
+
   const [correct, setCorrect] = React.useState(0);
   const [incorrect, setIncorrect] = React.useState(0);
   const [incorrectIndices, setIncorrectIndices] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [placeholder, setPlaceholder] = React.useState(
-    `Click here to start typing...`
+    `Click here to start typing...  ⌨️`
   );
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -167,26 +179,31 @@ function Home() {
 
   const activeSpan = useRef(null);
 
-  const [text, setText] = useState(paragraphsEnglish);
-
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "English"
+  );
+  const [text, setText] = useState(`paragraphs${language}`);
   const [elapsedTime, setElapsedTime] = useState(0);
-
   const [started, setStarted] = useState(false);
 
-  const [wpm, setWpm] = useState(0);
-
   useEffect(() => {
-    if (width < 767) {
-      setText(sentencesEnglish);
-    } else {
-      setText(paragraphsEnglish);
-    }
-  }, [width]);
+    localStorage.setItem("language", language);
+
+    const activeLanguageMap =
+      width < 767 ? sentencesByLanguage : paragraphsByLanguage;
+
+    const newTextValue = activeLanguageMap[language];
+
+    setText(newTextValue);
+  }, [language, width]);
 
   useEffect(() => {
     inputRef.current.focus();
-    const rand = Math.floor(Math.random() * text.length);
-    setRandText(text[rand].split(""));
+
+    if (text.length) {
+      const rand = Math.floor(Math.random() * text.length);
+      setRandText(text[rand].split(""));
+    }
   }, [text]);
 
   useEffect(() => {
@@ -283,7 +300,20 @@ function Home() {
       )}
 
       <div className="language-btn-div">
-        <button className="language-btn">English</button>
+        <select
+          className="form-select form-select-lg mb-3"
+          aria-label=".form-select-lg language"
+          onChange={(e) => {
+            setLanguage(e.target.value);
+            localStorage.setItem("language", e.target.value);
+            window.location.reload();
+          }}
+          value={language}
+        >
+          <option value="English">English</option>
+          <option value="French">French</option>
+          <option value="Spanish">Spanish</option>
+        </select>
       </div>
 
       <div className="text-area">
@@ -307,7 +337,6 @@ function Home() {
             ref={inputRef}
             placeholder={placeholder}
           />
-          <FontAwesomeIcon icon={faKeyboard} className="eye-icon" />
         </div>
       </div>
 
