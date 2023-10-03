@@ -306,14 +306,6 @@ function Home() {
     document.getElementById("input-area").value = "";
   };
 
-  function formatAsPercentage(num) {
-    return new Intl.NumberFormat("default", {
-      style: "percent",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(num / 100);
-  }
-
   const getClassName = (i) => {
     let className = "";
 
@@ -347,7 +339,7 @@ function Home() {
           time={formatTime(elapsedTime)}
           correct={correct}
           incorrect={incorrect}
-          accuracy={formatAsPercentage((correct / numberOfWords) * 100)}
+          accuracy={Number((correct / numberOfWords) * 100).toFixed(2)}
           wpm={~~(numberOfWords / 5 / (elapsedTime / 60000))}
         />
       )}
@@ -366,7 +358,7 @@ function Home() {
           <option value="English">English</option>
           <option value="French">French</option>
           <option value="Spanish">Spanish</option>
-          <option value="Chinese">Chinese</option>
+          {/* <option value="Chinese">Chinese</option> */}
         </select>
       </div>
 
