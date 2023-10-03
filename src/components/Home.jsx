@@ -201,13 +201,13 @@ function Home() {
         />
       )}
 
-      <div className="timer">{formatTime(elapsedTime)}</div>
-
       <div className="language-btn-div">
         <button className="language-btn">English</button>
       </div>
 
       <div className="text-area">
+        <div className="timer">{formatTime(elapsedTime)}</div>
+
         {randText.map((letter, i) => (
           <span
             key={i}
