@@ -78,6 +78,23 @@ function Home() {
     "La Patagonia es un lugar de belleza salvaje y prístina. Desde sus imponentes montañas hasta sus vastos lagos, es un paraíso para los amantes de la naturaleza.",
   ];
 
+  const paragraphsChinese = [
+    "當我們走在大街上，可以看到很多人都在忙碌地進行自己的工作。有的人在商店裡選購商品，有的人在餐廳享受著午餐，還有的人在公園裡散步放鬆。每個人都有自己的生活方式和追求。",
+    "學習一種語言是一個漫長而有趣的過程。當你開始學習，可能會感到困難和挫折。但隨著時間的流逝，你會發現自己逐漸進步，這會帶來很大的成就感。",
+    "春天是一個充滿生機的季節。樹木開始發新芽，鳥兒在樹上歌唱，花兒開始綻放。每當我走在春天的大街上，都會被這個季節的美麗和活力所吸引。",
+    "在現代社會中，技術發展日新月異。從智能手機到電腦，從汽車到飛機，科技為我們的生活帶來了很多便利。但同時，我們也應該意識到它所帶來的一些挑戰和問題。",
+    "音樂是一種美妙的藝術形式。無論是古典音樂還是現代流行音樂，它都可以觸動我們的心靈，帶給我們快樂和激情。我每天都會聆聽音樂，感受它的魅力。",
+    "友情是生命中最珍貴的寶物之一。真正的朋友會在困難時刻站在你身邊，支持你，鼓勵你，並分享你的喜怒哀樂。",
+    "旅行可以拓展我們的視野，讓我們體驗不同的文化和風俗。每次旅行，我都會學到新的東西，並對生活有更深的理解。",
+    "運動不僅可以保持身體健康，還可以放鬆心情。無論是跑步還是打籃球，運動都能帶給我們快樂。",
+    "食物不僅是維持生命的必需品，也是文化的一部分。不同的地方有不同的飲食習慣，這些習慣反映了當地的歷史和文化。",
+    "工作不僅是為了賺錢，更是一種追求。真正熱愛自己工作的人，會在工作中找到滿足和快樂。",
+    "藝術是表達情感和思想的一種方式。從繪畫到雕塑，從音樂到舞蹈，每一種藝術形式都有其獨特的魅力。",
+    "保護環境是我們共同的責任。每一個小小的行動，都可以對我們的地球產生影響。",
+    "讀書可以為我們的心靈提供糧食。每當我覺得迷茫或者疲倦，我都會選擇一本好書，尋找答案或者放鬆心情。",
+    "家庭是我們生活的基石。無論外面的世界如何變化，家總是我們的避風港。",
+  ];
+
   const sentencesEnglish = [
     "The moonlight danced on the tranquil sea.",
     "Leaves whispered secrets in a gentle breeze.",
@@ -147,16 +164,41 @@ function Home() {
     "El fútbol es el deporte más popular en España.",
   ];
 
+  const sentencesChinese = [
+    "這是一個美麗的早晨。",
+    "我喜歡吃鳳梨餅乾。",
+    "他的笑容真的很有感染力。",
+    "我們計劃明天去海邊。",
+    "這部電影真的很感人。",
+    "書中自有黃金屋。",
+    "練習使得完美。",
+    "他是一個勤奮的學生。",
+    "這家餐廳的食物非常好吃。",
+    "你最近過得怎麼樣？",
+    "風景如畫的大自然令人心曠神怡。",
+    "我希望明天會是個晴天。",
+    "夜晚的星空如此璀璨。",
+    "繁忙的生活需要一些放鬆的時光。",
+    "音樂有助於舒緩壓力。",
+    "與朋友們聚會總是很有趣。",
+    "讀書破萬卷，下筆如有神。",
+    "夢想是驅使我們前進的力量。",
+    "心懷感激的人生是幸福的。",
+    "每一天都是一個新的開始。",
+  ];
+
   const paragraphsByLanguage = {
     English: paragraphsEnglish,
     French: paragraphsFrench,
     Spanish: paragraphsSpanish,
+    Chinese: paragraphsChinese,
   };
 
   const sentencesByLanguage = {
     English: sentencesEnglish,
     French: sentencesFrench,
     Spanish: sentencesSpanish,
+    Chinese: sentencesChinese,
   };
 
   const [correct, setCorrect] = React.useState(0);
@@ -271,7 +313,14 @@ function Home() {
   }
 
   const getClassName = (i) => {
-    let className = "letter";
+    let className = "";
+
+    if (language === "Chinese") {
+      className += "letter chinese";
+    } else {
+      className += "letter";
+    }
+
     if (i < index) {
       className += incorrectIndices.includes(i) ? " incorrect" : " correct";
     } else if (i === index) {
@@ -313,6 +362,7 @@ function Home() {
           <option value="English">English</option>
           <option value="French">French</option>
           <option value="Spanish">Spanish</option>
+          <option value="Chinese">Chinese</option>
         </select>
       </div>
 
