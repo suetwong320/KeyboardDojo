@@ -327,6 +327,8 @@ function Home() {
 
   const numberOfWords = randText.join("").split(" ").length;
 
+  // console.log(randText.length, correct);
+
   return (
     <div className="Home">
       <nav className="nav-bar" style={{ width: "100%" }}>
@@ -339,7 +341,7 @@ function Home() {
           time={formatTime(elapsedTime)}
           correct={correct}
           incorrect={incorrect}
-          accuracy={Number((correct / numberOfWords) * 100).toFixed(2)}
+          accuracy={Number((correct / randText.length) * 100).toFixed(2)}
           wpm={~~(numberOfWords / 5 / (elapsedTime / 60000))}
         />
       )}
